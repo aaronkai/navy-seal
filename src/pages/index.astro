@@ -1,5 +1,7 @@
 ---
 import Fat from "../components/bodyfat.svelte"
+import seal from "../assets/seal-icon.svg"
+import {Image} from 'astro:assets'
 ---
 
 <html lang="en">
@@ -8,10 +10,18 @@ import Fat from "../components/bodyfat.svelte"
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Body Fat Calculator</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
-		<Fat />
+		<header class="grid text-center gap-4">
+			<h1 class="text-5xl font-bungee text-slate-900">Navy Seal Bodyfat Calculator</h1>
+			
+		</header>
+		<Image src={seal} alt="a navy colored seal"/>
+		<Fat client:only/>
+
+		<p>One of the best methods of estimating the fat content of a person's body was developed by US Navy and it calculates body fat with 3-4% precision. This parameter is determined for all service members of the US Navy since they are required to meet certain percent body fat (%BF) standards as a condition of military service.</p>
+
+		
 	</body>
 </html>

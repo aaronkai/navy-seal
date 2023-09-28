@@ -8,7 +8,7 @@
   let hips;
 
   function processForm(lbs, neck, waist, height, hips) {
-    if (sex === Sex.Male) {
+    if (sex === "Male") {
       bodyfatPercentage =
         Math.round(
           (86.01 * Math.log10(waist - neck) -
@@ -39,53 +39,56 @@
 </script>
 
 <main class="grid gap-8 justify-center items-center">
-  <header class="grid text-center gap-4">
-    <h1 class="text-5xl font-bungee text-indigo-300">Bodyfat Calculator</h1>
-    <h2 class="text-3xl font-bungee text-indigo-300">Navy-seal Formula</h2>
-  </header>
   {#if !bodyfatPercentage}
     <form
-      class="mx-auto p-8 border-2 border-indigo-300 rounded grid grid-cols-2 gap-4 max-w-md justify-center mx-4"
+      class=" border-slate-900 grid grid-cols-2 gap-4 max-w-md justify-center mt-8"
       on:submit|preventDefault={processForm(lbs, neck, waist, height, hips)}
     >
-      <h3 class="col-span-2 text-indigo-300 text-3xl text-center font-bungee">
+      <h3 class="col-span-2 text-slate-900 text-3xl text-center font-bungee">
         Your Biometrics:
       </h3>
 
-      <label class="font-bungee text-lg text-indigo-300" for="male">
+      <label class="font-bungee text-lg text-slate-900" for="male">
         <input
           type="radio"
           id="male"
           name="sex"
           bind:group={sex}
-          value={"Male"}
+          value="Male"
         />
-        'Male'
+        Male
       </label>
-      <label class="font-bungee text-lg text-indigo-300" for="female">
+      <label class="font-bungee text-lg text-slate-900" for="female">
         <input
           type="radio"
           id="female"
           name="sex"
           bind:group={sex}
-          value={"Female"}
+          value="Female"
         />
         Female
       </label>
-      <label class="font-bungee text-lg text-indigo-300" for="lbs"
-        >Weight in pounds:</label
-      >
+      <div class="group relative">
+        <label
+          class=" font-bungee text-lg text-slate-900 underline underline-offset-4 decoration-dotted decoration-orange-600"
+          for="lbs"
+          >Weight in pounds:
+        </label>
+        <p
+          class="pointer-events-none ml-4 opacity-0 transition-opacity group-hover:opacity-80 bg-teal-300 p-1 rounded no-underline"
+        >
+          Test
+        </p>
+      </div>
       <input
         required
         type="number"
-        step="0.01"
+        step="0.1"
         bind:value={lbs}
         id="lbs"
         name="lbs"
       />
-      <label class="font-bungee text-lg text-indigo-300" for="neck"
-        >Neck in inches:</label
-      >
+      <label class="font-bungee text-lg text-slate-900" for="neck">Neck</label>
       <input
         required
         type="number"
@@ -94,7 +97,7 @@
         id="neck"
         name="neck"
       />
-      <label class="font-bungee text-lg text-indigo-300" for="waist"
+      <label class="font-bungee text-lg text-slate-900" for="waist"
         >Waist at belly-button in inches:</label
       >
       <input
@@ -105,19 +108,8 @@
         id="waist"
         name="waist"
       />
-      <label class="font-bungee text-lg text-indigo-300" for="height"
-        >Height in inches:</label
-      >
-      <input
-        required
-        type="number"
-        step="0.01"
-        bind:value={height}
-        id="height"
-        name="height"
-      />
       {#if sex === "Female"}
-        <label class="font-bungee text-lg text-indigo-300" for="height"
+        <label class="font-bungee text-lg text-slate-900" for="height"
           >Hips in inches:</label
         >
         <input
@@ -129,8 +121,20 @@
           name="height"
         />
       {/if}
+      <label class="font-bungee text-lg text-slate-900" for="height"
+        >Height in inches:</label
+      >
+      <input
+        required
+        type="number"
+        step="0.01"
+        bind:value={height}
+        id="height"
+        name="height"
+      />
+
       <button
-        class=" mt-4 p-4 bg-indigo-300 border-none col-span-2 text-slate-900 text-xl rounded font-bungee"
+        class=" mt-4 p-4 bg-emerald-200 border-none col-span-2 text-slate-900 text-xl rounded font-bungee"
         type="submit">Calculate Bodyfat Percentage</button
       >
     </form>
@@ -141,3 +145,13 @@
     </form>
   {/if}
 </main>
+<div class="p-10">
+  <div class="group relative w-max">
+    <button>Click me!</button>
+    <span
+      class="pointer-events-none absolute -top-7 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100"
+    >
+      This is a tooltip.
+    </span>
+  </div>
+</div>
